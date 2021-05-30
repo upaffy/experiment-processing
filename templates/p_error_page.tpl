@@ -10,10 +10,13 @@
     </head>
     <body>
         <div class="ui text container">
-            <h1 class="ui dividing header">Using Grids</h1>
+            <h1 class="ui dividing header">Ooooops...</h1>
 
-            <h3 class="first">Container</h3>
-            <p>A container is a fixed width element that wraps your site's content. It remains a constant size and uses <b>margin</b> to center. Containers are the simplest way to center page content inside a grid.</code>
+            <p>
+                <div class="ui error message">
+                    <div class="header">{{ type }}</div>
+                    <p>Сервер правда пытался все посчитать, но значение давления в таблице с номером {{ inc_table }} (строка: {{ inc_row }}, столбец: {{ inc_column }}) ему не подошло. Пожалуйста, проверьте корректность введенных данных и повторите попытку.</p>
+                </div>
             </p>
         </div>
         <form action="/" method="post">
@@ -29,8 +32,11 @@
                           <tr>
                             <th colspan="4">
                                 <div class="ui form">
-                                  <div class="field">
-                                    <input type="text" name="temp" placeholder="Введите значение температуры, для которой берутся измерения, в градусах цельсия">
+                                  <div class="ui fluid labeled input">
+                                    <div class="ui label">
+                                        °С
+                                    </div>
+                                    <input type="text" name="t{{ table }}" placeholder="Введите значение температуры, для которой берутся измерения" value = {{ data[f"t{table}"] }}>
                                   </div>
                                 </div>
                             </th>
@@ -50,14 +56,14 @@
                                 <td>
                                     <div class="ui form">
                                       <div class="field">
-                                        <input name="p1{{ table }}{{ row }}" type="text">
+                                        <input name="p1{{ table }}{{ row }}" type="text" value={{ data[f"p1{table}{row}"] }}>
                                       </div>
                                     </div>
                                 </td>
                                 <td>
                                     <div class="ui form">
                                       <div class="field">
-                                        <input name="p2{{ table }}{{ row }}" type="text">
+                                        <input name="p2{{ table }}{{ row }}" type="text" value={{ data[f"p2{table}{row}"] }}>
                                       </div>
                                     </div>
                                 </td>
