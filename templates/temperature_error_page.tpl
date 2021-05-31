@@ -20,6 +20,29 @@
             </p>
         </div>
         <form action="/" method="post">
+            <div class="ui segment">
+              <h3 class="ui center aligned header">
+                Таблица 0
+              </h3>
+            </div>
+            <div class="ui container" style="padding-top: 10px;">
+                <table class="ui {{ colours[0] }} celled table">
+                    <thead>
+                      <tr>
+                        <th>
+                            <div class="ui form">
+                              <div class="ui fluid labeled input">
+                                <div class="ui label">
+                                    кПа
+                                </div>
+                                <input type="text" name="p0" placeholder="Введите значение давления в лаборатории (p0)", value = {{ data["p0"] }}>
+                              </div>
+                            </div>
+                        </th>
+                      </tr>
+                    </thead>
+                </table>
+            </div>
             %for table in tables:
                 <div class="ui segment">
                   <h3 class="ui center aligned header">
@@ -45,8 +68,8 @@
                         <thead>
                             <th>№ п.п.</th>
                             <th>Vц, мл</th>
-                            <th>p1, кПа</th>
-                            <th>p2, кПа</th>
+                            <th>Δp1, кПа</th>
+                            <th>Δp2, кПа</th>
                         </thead>
                         <tbody>
                             %for row in rows:

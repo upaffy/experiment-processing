@@ -10,13 +10,50 @@
     </head>
     <body>
         <div class="ui text container">
-            <h1 class="ui dividing header">Using Grids</h1>
+            <h1 class="ui dividing header">Usage</h1>
 
-            <h3 class="first">Container</h3>
-            <p>A container is a fixed width element that wraps your site's content. It remains a constant size and uses <b>margin</b> to center. Containers are the simplest way to center page content inside a grid.
+            <h3 class="first">Для чего?</h3>
+            <p>
+                <div class="ui list">
+                    <div class="item">Для обработки экспериментальных данных к лабораторной работе №2.01!</div>
+                    <div class="item">Введите данные в соответсвующие поля, нажмите кнопку <b>Submit</b> и наслаждайтесь!</div>
+                </div>
+            </p>
+
+            <h3 class="first">Как вводить?</h3>
+            <p>
+                <div class="ui bulleted list">
+                    <div class="item">Внутри поля для ввода необходимо указывать численные значения (без букв и специальных символов);</div>
+                    <div class="item">При вводе дробных значений можно использовать как точку, так и запятую;</div>
+                    <div class="item">Для корректной работы алгоритма также необходимо заполнить все поля.</div>
+                </div>
             </p>
         </div>
         <form action="/" method="post">
+            <div class="ui segment">
+              <h3 class="ui center aligned header">
+                Таблица 0
+              </h3>
+            </div>
+            <div class="ui container" style="padding-top: 10px;">
+                <table class="ui {{ colours[0] }} celled table">
+                    <thead>
+                      <tr>
+                        <th>
+                            <div class="ui form">
+                              <div class="ui fluid labeled input">
+                                <div class="ui label">
+                                    кПа
+                                </div>
+                                <input type="text" name="p0" placeholder="Введите значение давления в лаборатории (p0)">
+                              </div>
+                            </div>
+                        </th>
+                      </tr>
+                    </thead>
+                </table>
+            </div>
+
             %for table in tables:
                 <div class="ui segment">
                   <h3 class="ui center aligned header">
@@ -33,7 +70,7 @@
                                     <div class="ui label">
                                         °С
                                     </div>
-                                    <input type="text" name="t{{ table }}" placeholder="Введите значение температуры, для которой берутся измерения" value = "5">
+                                    <input type="text" name="t{{ table }}" placeholder="Введите значение температуры, для которой берутся измерения">
                                   </div>
                                 </div>
                             </th>
@@ -42,8 +79,8 @@
                         <thead>
                             <th>№ п.п.</th>
                             <th>Vц, мл</th>
-                            <th>p1, кПа</th>
-                            <th>p2, кПа</th>
+                            <th>Δp1, кПа</th>
+                            <th>Δp2, кПа</th>
                         </thead>
                         <tbody>
                             %for row in rows:
