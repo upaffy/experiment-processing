@@ -31,7 +31,7 @@ def build_K_from_t(K: tp.List[float], t: tp.List[float], A: float, C: float) -> 
     plt.ylim(min_height, max_height)
     plt.xlim(0, max_width)
 
-    plot_fn(ax, colours[0], t, K)
+    plot_fn(ax, colours[1], t, K)
 
     x = np.arange(0, max_width + 5, 1)
     y = find_y(x, A, C)
