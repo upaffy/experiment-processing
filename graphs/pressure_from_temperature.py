@@ -11,7 +11,7 @@ def build_p_from_t(t: tp.List[float], p: tp.List[tp.List[float]]) -> str:
     ax = fig.add_subplot(2, 1, 1)
 
     # возможные цвета графиков
-    colours = ["g", "b", "m", "c", "y"]
+    colours = ["g", "b", "m", "c", "y", "r", "k"]
 
     # основные и дополнительные линии в системе координат (помимо Ox и Oy)
     ax.minorticks_on()
