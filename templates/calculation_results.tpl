@@ -145,10 +145,10 @@
                                     {{ data[f"p2{table}{row}"] }}
                                 </td>
                                 <td>
-                                    p
+                                    {{ p[table-1][row-1][0] }}
                                 </td>
                                 <td>
-                                    1/p
+                                    {{ p[table-1][row-1][1] }}
                                 </td>
                             </tr>
                             %end
@@ -162,8 +162,7 @@
                 По данным таблиц построим на одной координатной сетке графики зависимости рабочего объема Vц от обратного давления 1/p
             </p>
         </div>
-
-
+        <img class="ui centered huge image" src="/static/{{ graph_1 }}">
         <div class="ui text container">
             <p>
                 Рассчитаем значение углового коэффициента K для каждого из графиков зависимости Vц от 1/p:
@@ -186,8 +185,8 @@
                     %for table in tables:
                     <tr>
                         <td>{{ tables[table - 1] }}</td>
-                        <td>t</td>
-                        <td>K</td>
+                        <td>{{ t[table - 1] }}</td>
+                        <td>{{ K[table - 1] }}</td>
                     </tr>
                     %end
                 </tbody>
@@ -198,18 +197,24 @@
             <p>
                 По данным таблицы построим график зависимости K(t).
                 Для начала нанесем на график экспериментальные точки и затем воспользуемся методом наименьших квадратов:
-                $$  A = \frac{\sum_{i=1}^{n}(X_i - \overline{X})Y_i}{\sum_{i=1}^{n}(X_i - \overline{X})^2} = $$
-                $$ C = \overline{Y} - A\overline{X} = $$
+                $$  A = \frac{\sum_{i=1}^{n}(X_i - \overline{X})Y_i}{\sum_{i=1}^{n}(X_i - \overline{X})^2} = {{ graph_2_A }}$$
+                $$ C = \overline{Y} - A\overline{X} = {{ graph_2_C }}$$
+            </p>
+        </div>
+        <img class="ui centered huge image" src="/static/{{ graph_2 }}">
+        <div class="ui text container">
+            <p>
                 Теперь рассчитаем тепературу абсолютного нуля:
-                $$ t_{*} = -\frac{C}{A} = $$
+                $$ t_{*} = -\frac{C}{A} = {{ abs_zero_1 }}°C$$
                 По данным первых таблиц заполним следующую таблицу, где для каждого из объемов найдем значение обратного объема 1/Vц и рассчитаем величину t∗ по формуле:
-                $$ \widetilde{t_{*}} = -\frac{c}{a} = $$
+                $$ \widetilde{t_{*}} = -\frac{c}{a} $$
+                где a и c, соответственно, угловой коэффициент и свободное слагаемое для зависимости p(t).
             </p>
         </div>
 
 
         <div class="ui container" style="padding-top: 10px;">
-            <table class="ui {{ colours[table] }} celled table">
+            <table class="ui grey celled table">
                 <thead>
                   <tr>
                     <th> Vц </th>
@@ -232,38 +237,23 @@
                 <tbody>
                     %for table in tables:
                         <tr>
-                            <td>t</td>
-                            <td>p</td>
-                            <td>p</td>
-                            <td>p</td>
-                            <td>p</td>
-                            <td>p</td>
-                            <td>p</td>
-                            <td>p</td>
-                            <td>p</td>
+                            <td>{{ t[table-1] }}</td>
+                            %for counter in rows:
+                                <td>{{ p[table-1][counter-1][0] }}</td>
+                            %end
                         </tr>
                     %end
                     <tr>
                         <td>1/Vц</td>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
-                        <td>V</td>
+                        %for counter in rows:
+                            <td>{{ opposite_V[counter-1] }}</td>
+                        %end
                     <tr>
                     <tr>
                         <td>t∗, C</td>
-                        <td>t</td>
-                        <td>t</td>
-                        <td>t</td>
-                        <td>t</td>
-                        <td>t</td>
-                        <td>t</td>
-                        <td>t</td>
-                        <td>t</td>
+                        %for counter in rows:
+                            <td>{{ t_zero_list[counter-1] }}</td>
+                        %end
                     <tr>
                 </tbody>
             </table>
@@ -273,29 +263,27 @@
                 Пользуясь этой таблицей, построим графики p(t) на одной координатной сетке:
             </p>
         </div>
-
-
+        <img class="ui centered huge image" src="/static/{{ graph_3 }}">
         <div class="ui text container">
             <p>
                 Также с помощью этой таблицы, найдем угловой коэффициент A′ и свободное слагаемое C′ для зависимости t∗(1/Vц):
-                $$ A' = \frac{1}{D}\sum_{i=1}^N(X_i -\overline{X})Y_i = $$
+                $$ A' = \frac{1}{D}\sum_{i=1}^N(X_i -\overline{X})Y_i = {{ graph_4_A }}$$
                 Величина C' - фактически есть предел
                 $$ \lim\limits_{1/V\to0} \widetilde{t_{*}} $$
                 то есть совпадает со значением t∗.
-                $$ C' = \overline{Y} - A\overline{X} = = \widetilde{t_{*}} $$
+                $$ C' = \overline{Y} - A\overline{X} = {{ graph_4_C }} = \widetilde{t_{*}} $$
                 На координатной сетке t∗ от 1/Vц отметим экспериментальные точки и начертим прямую,
                 соответствующую найденным параметрам A' и C'. Продолжим прямую до пересечения с осью ординат
             </p>
         </div>
-
-
+        <img class="ui centered huge image" src="/static/{{ graph_4 }}">
         <div class="ui text container">
             <h1 class="ui dividing header">Окончательные результаты</h1>
             <p>
                 Температура абсолютного нуля, рассчитанная в работе двумя способами:
                 <div class="ui bulleted list">
-                  <div class="item">раз с погрешностями</div>
-                  <div class="item">два с погрешностями</div>
+                  <div class="item">$$ t_{*} = {{ abs_zero_1 }}°C$$</div>
+                  <div class="item">$$ \widetilde{t_{*}} = {{ graph_4_C }}°C$$</div>
                 </div>
             </p>
         </div>
@@ -332,7 +320,7 @@
                 padding: 18px;
                 width: 100%;
                 border: none;
-                text-align: left;
+                text-align: center;
                 outline: none;
                 font-size: 15px;
                 transition: 0.4s;
