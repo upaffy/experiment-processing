@@ -1,6 +1,9 @@
 import typing as tp
 from dataclasses import dataclass, field
 
+# количество строк в таблице измерений
+ROWS_NUMBER = 8
+# количество таблиц
 TABLES_NUMBER = 4
 
 
