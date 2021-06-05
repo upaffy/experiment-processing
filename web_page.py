@@ -65,13 +65,15 @@ def send_form() -> str:
     p = find_gas_pressure(p0, p1, p2)
     V = [50, 60, 70, 80, 90, 100, 110, 120]
 
-    graph_1, graph_1_A = build_vol_from_pres(p, V)
+    V_liter = [element * 0.001 for element in V]
+
+    graph_1, graph_1_A = build_vol_from_pres(p, V_liter)
     K = graph_1_A
 
     graph_2_A, graph_2_C = find_mnk_odds(t, K)
     graph_2_A = round(graph_2_A, 2)
     graph_2_C = round(graph_2_C, 2)
-    abs_zero_1 = round(-graph_2_C / graph_2_A, 3)
+    abs_zero_1 = round(-graph_2_C / graph_2_A)
 
     graph_2 = build_K_from_t(K, t, graph_2_A, graph_2_C)
 
@@ -88,7 +90,7 @@ def send_form() -> str:
 
     graph_4_A, graph_4_C = find_mnk_odds(opposite_V, t_zero_list)
     graph_4_A = round(graph_4_A, 2)
-    graph_4_C = round(graph_4_C, 2)
+    graph_4_C = round(graph_4_C)
 
     graph_4 = build_t_zero_from_v(opposite_V, t_zero_list, graph_4_A, graph_4_C)
 
