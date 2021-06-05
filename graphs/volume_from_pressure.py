@@ -34,7 +34,7 @@ def build_vol_from_pres(
     max_width += 0.001
 
     # то же самое для высоты
-    max_height = max(V) + 5
+    max_height = max(V)
 
     # длина графика по осям
     plt.ylim(0, max_height)
@@ -54,7 +54,7 @@ def build_vol_from_pres(
 
     ax.legend()
     ax.set_xlabel("1/p, 1/кПа")
-    ax.set_ylabel("Vц, мл")
+    ax.set_ylabel("Vц, л")
     name = "volume_from_pressure.png"
     plt.savefig(f"graphs/{name}", transparent=True, bbox_inches="tight")
 
