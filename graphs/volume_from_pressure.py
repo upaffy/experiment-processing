@@ -6,7 +6,7 @@ from calculations.mnk import find_mnk_odds
 
 
 def build_vol_from_pres(
-    p: tp.List[tp.List[tp.Tuple[float, float]]], V: tp.List[int]
+    p: tp.List[tp.List[tp.Tuple[float, float]]], V: tp.List[float]
 ) -> tp.Tuple[str, tp.List[float]]:
     opposite_p = [[element[1] for element in table] for table in p]
 
